@@ -82,4 +82,5 @@ production:
   <<: *default
   database: stranger_teams_production
   username: stranger_teams
+
   password: <%= ENV['STRANGER_TEAMS_DATABASE_PASSWORD'] %>
