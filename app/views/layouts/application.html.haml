@@ -16,6 +16,7 @@
       %h1 Stranger Teams
       %ul#nav
         - if teacher_signed_in?
+          %li= link_to "Profile", teacher_path(current_teacher)
           %li= link_to "Logout", destroy_teacher_session_path, method: :delete
         - else
           %li= link_to "Register", new_teacher_registration_path
