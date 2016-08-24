@@ -2,8 +2,11 @@
 = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
   = devise_error_messages!
   .form-group
-    = f.label :school_key
-    = f.text_field :school_key, class: "form-control"
+    = f.label :first_name
+    = f.text_field :first_name, class: "form-control"
+  .form-group
+    = f.label :last_name
+    = f.text_field :last_name, class: "form-control"
   .form-group
     = f.label :email
     %br/
@@ -19,6 +22,9 @@
     = f.label :password_confirmation
     %br/
     = f.password_field :password_confirmation, autocomplete: "off", class: "form-control"
+  .form-group
+    = f.label :school_key
+    = f.text_field :school_key, class: "form-control"
   .actions
     = f.submit "Sign up", class: "form-control"
 = render "devise/shared/links"
