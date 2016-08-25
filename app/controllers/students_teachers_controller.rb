@@ -12,4 +12,5 @@ class StudentsTeachersController < ApplicationController
     @student.update_attributes(mentor: nil)
     redirect_to @teacher
   end
+
 end
