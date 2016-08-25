@@ -1,7 +1,7 @@
 class Student < ApplicationRecord
   belongs_to :mentor, class_name: :Teacher
 
-  validates_presence_of :first_name, :last_name, :grade_level, :gender, :gpa, :mentor_id
+  validates_presence_of :first_name, :last_name, :grade_level, :gender, :gpa
 
   serialize :food_allergies, Array
 
