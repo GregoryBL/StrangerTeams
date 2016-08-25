@@ -30,7 +30,8 @@ class Teacher < ApplicationRecord
 
   def clear_self_from_students_mentor
     students.each do |student|
-      student.mentor = nil
+      student.mentor_id = nil
+      student.save
     end
   end
 end
