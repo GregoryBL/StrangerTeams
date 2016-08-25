@@ -17,10 +17,10 @@
         %td= student.detention_count
         - if not_assigned?(student)
           %td
-            %button.btn.btn-secondary= link_to 'Add', student_teacher_path(student, current_teacher),  method: :patch
+            %button.btn.btn-secondary= button_to 'Add', student_teacher_path(student, current_teacher),  method: :patch
         - elsif my_student?(student)
           %td
-            %button.btn.btn-secondary= link_to "Remove", remove_student_teacher_path(student, current_teacher), method: :patch
+            %button.btn.btn-secondary= button_to "Remove", remove_student_teacher_path(student, current_teacher), method: :patch
         - else
           %td
             %button.btn.btn-secondary{:disabled => "disabled", :type => "button"} Assigned
