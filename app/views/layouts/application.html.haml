@@ -13,7 +13,6 @@
       - if flash[:alert]
         %p.alert= alert
     %header#header
-      %h1 Stranger Teams
       %ul#nav
 
         %li= link_to "Home", root_path
@@ -23,4 +22,5 @@
         - else
           %li= link_to "Register", new_teacher_registration_path
           %li= link_to "Log In", teacher_session_path
+      %h1 Stranger Teams
     = yield

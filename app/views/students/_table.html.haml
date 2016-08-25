@@ -1,0 +1,22 @@
+%table.table
+  %thead
+    %tr
+      %th Student Name
+      %th Teacher
+      %th Grade
+      %th Gender
+      %th GPA
+      %th Detention Count
+  %tbody
+    - students.each do |student|
+      %tr
+      %td= student.full_name, , student_path(student)
+      %td= student.mentor.full_name
+      %td= student.grade_level
+      %td= student.gender
+      %td= student.gpa
+      %td= student.detention_count
+      / - if student.unassigned?
+      /   %td.col-md-1= link_to '', "#", class: "glyphicon glyphicon-plus"
+      / - else
+      /   %td.col-md-1= link_to '', "#", class: "glyphicon glyphicon-minus"

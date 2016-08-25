@@ -1,4 +1,10 @@
-
+#nav li{
+  list-style-type: none;
+  display: inline-block;
+  float: right;
+  padding: 5px;
+  margin-right: 10px;
+}
  // * This is a manifest file that'll be compiled into application.css, which will include all the files
  // * listed below.
  // *

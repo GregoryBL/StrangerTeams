@@ -2,18 +2,19 @@
   %thead
     %tr
       %th Student Name
-      %th Teacher
       %th Grade
       %th Gender
       %th GPA
       %th Detention Count
   %tbody
-    %tr
-      %td.col-md-2= student.full_name
-      %td.col-md-2= student.mentor.full_name
-      %td.col-md-1= student.grade_level
-      %td.col-md-2= student.gender
-      %td.col-md-1= student.gpa
-      %td.col-md-2= student.detention_count
-      %td.col-md-1= link_to '', "#", class: "glyphicon glyphicon-plus"
-      %td.col-md-1= link_to '', "#", class: "glyphicon glyphicon-minus"
+    - students.each do |student|
+      %tr
+      %td= link_to student.full_name, student_path(student)
+      %td= student.grade_level
+      %td= student.gender
+      %td= student.gpa
+      %td= student.detention_count
+      %td
+        %button= link_to '', "#", class: "glyphicon glyphicon-plus",  method: :post
+      %td
+        %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post
