@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20160824225343) do
     t.integer  "detention_count", default: 0
     t.string   "shirt_size"
     t.string   "food_allergies"
-    t.integer  "mentor_id",                   null: false
+    t.integer  "mentor_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
