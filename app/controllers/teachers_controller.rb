@@ -1,4 +1,7 @@
 class TeachersController < ApplicationController
+
+  before_action :authenticate_teacher!
+
   def index
     @teachers = Teacher.sort_alphabetically_by_last_name
   end

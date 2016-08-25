@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/students/import' => 'students#import', as: :students_import
   post '/students/import' => 'students#create_multiple'
   resources :students
+  patch '/students/:student_id/teachers/:id' => 'students_teachers#update', as: :student_teacher
 
   root to: 'welcome#index'
 
