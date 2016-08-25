@@ -7,7 +7,7 @@
       %th GPA
       %th Detention Count
   %tbody.rowlink{"data-link" => "row"}
-    - students.each do |student|
+    - @students.each do |student|
       %tr
         %td
           %strong= link_to student.full_name, student_path(student)
@@ -17,7 +17,7 @@
         %td= student.detention_count
         - if not_assigned?(student)
           %td.rowlink-skip
-            %button= link_to 'Add', "#", class: "btn btn-secondary",  method: :post
+            %button= link_to 'Add', students_teachers_path(student, @teacher), class: "btn btn-secondary",  method: :post
         - else
           %td.rowlink-skip
             %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post
