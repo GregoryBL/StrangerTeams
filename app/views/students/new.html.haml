@@ -13,8 +13,13 @@
     = f.label :gpa
     = f.text_field :gpa
   .form_group
+    = f.label :detention_count
+    = f.text_field :detention_count
+  .form_group
     = f.label :shirt_size
     = f.select "shirt_size", [["xs", "xs"], ["s", "s"], ["m", "m"], ["l", "l"], ["xl", "xl"]]
   .form_group
-    = f.label :detention_count
-    = f.text_field :food_allergies
+    = f.label :food_allergies
+    = f.text_area :food_allergies
+  .form_group
+    = f.submit "add student"
