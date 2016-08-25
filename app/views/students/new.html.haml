@@ -1,0 +1,20 @@
+%h2 Add new student
+= form_for @student do |f|
+  .form_group
+    = f.label :first_name
+    = f.text_field :first_name
+  .form_group
+    = f.label :last_name
+    = f.text_field :last_name
+  .form_group
+    = f.label :gender
+    = f.select "gender",[["male", "male"], ["female", "female"], ["other", "other"]]
+  .form_group
+    = f.label :gpa
+    = f.text_field :gpa
+  .form_group
+    = f.label :shirt_size
+    = f.select "shirt_size", [["xs", "xs"], ["s", "s"], ["m", "m"], ["l", "l"], ["xl", "xl"]]
+  .form_group
+    = f.label :detention_count
+    = f.text_field :food_allergies
