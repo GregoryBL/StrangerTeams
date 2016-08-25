@@ -9,4 +9,11 @@ class StudentsTeachersController < ApplicationController
       redirect_to @teacher
     end
   end
+
+  def remove
+    @student = Student.find(params[:student_id])
+    @teacher = Teacher.find(params[:id])
+    @student.update_attributes(mentor: nil)
+    redirect_to @teacher
+  end
 end

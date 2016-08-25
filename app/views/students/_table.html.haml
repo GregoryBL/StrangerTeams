@@ -6,18 +6,22 @@
       %th Gender
       %th GPA
       %th Detention Count
-  %tbody.rowlink{"data-link" => "row"}
+  %tbody
     - @students.each do |student|
       %tr
         %td
           %strong= link_to student.full_name, student_path(student)
         %td= student.grade_level
         %td= student.gender
-        %td= student.gpa
+        %td{:class => color_indicate_gpa_range(student)}= student.gpa
         %td= student.detention_count
         - if not_assigned?(student)
-          %td.rowlink-skip
-            %button= link_to 'Add', student_teacher_path(student, current_teacher), class: "btn btn-secondary",  method: :patch
+          %td
+            = button_to 'Add', student_teacher_path(student, current_teacher),  method: :patch, class: "btn btn-secondary"
+        - elsif my_student?(student)
+          %td
+            = button_to "Remove", remove_student_teacher_path(student, current_teacher), method: :patch, class: "btn btn-secondary"
         - else
-          %td.rowlink-skip
-            %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :delete
+          %td
+            %button.btn.btn-secondary{:disabled => "disabled", :type => "button"} Assigned
+
