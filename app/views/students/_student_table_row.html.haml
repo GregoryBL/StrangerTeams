@@ -1,0 +1,21 @@
+%tr.student_row{id: "student_row_#{student.id}"}
+  %td
+    %strong= link_to student.full_name, student_path(student)
+  %td= student.grade_level
+  %td= student.gender
+  %td
+    - if student.mentor_id == nil
+      Unassigned
+    - elsif is_admin?
+      = form_for :teachers, url: student_path(student), method: :patch do |f|
+        = collection_select(:student, :mentor_id, Teacher.all, :id, :full_name, {selected: student.mentor_id}, {id: student.id, class: "teacher-drop-down"})
+    - else
+      = student.mentor.full_name
+  %td= student.gpa
+  %td= student.detention_count
+  - if not_assigned?(student)
+    %td
+      %button= link_to 'Add', "student_teacher_path(student, current_teacher)", class: "btn btn-secondary",  method: :patch
+  - else
+    %td
+      %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post

@@ -1,4 +1,4 @@
-%table.table.table-inverse
+%table.table.table-inverse#all-students-table
   %thead
     %tr
       %th Student Name
@@ -7,22 +7,6 @@
       %th Teacher
       %th GPA
       %th Detention Count
-  %tbody.rowlink{"data-link" => "row"}
+  %tbody
     - students.each do |student|
-      %tr
-        %td
-          %strong= link_to student.full_name, student_path(student)
-        %td= student.grade_level
-        %td= student.gender
-        - if student.mentor_id == nil
-          %td Unassigned
-        - else
-          %td= student.mentor.full_name
-        %td= student.gpa
-        %td= student.detention_count
-        - if not_assigned?(student)
-          %td.rowlink-skip
-            %button= link_to 'Add', "student_teacher_path(student, current_teacher)", class: "btn btn-secondary",  method: :patch
-        - else
-          %td.rowlink-skip
-            %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post
+      = render partial: "/students/student_table_row", locals: { student: student }
