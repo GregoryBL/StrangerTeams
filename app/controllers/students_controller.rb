@@ -3,7 +3,7 @@ require 'csv'
 class StudentsController < ApplicationController
 
   def index # call method to sort students alphabetically
-    @students = Student.sort_alphabetically_by_last_name
+    @student_paginate = Student.paginate(:page => params[:page], :per_page => 50).sort_alphabetically_by_last_name
   end
 
   def show # show individual student
