@@ -5,7 +5,7 @@ class StudentsController < ApplicationController
   before_action :authenticate_teacher!
 
   def index # call method to sort students alphabetically
-    @student_paginate = Student.paginate(:page => params[:page], :per_page => 50).sort_alphabetically_by_last_name
+    @students = Student.sort_alphabetically_by_last_name
   end
 
   def show # show individual student
@@ -34,7 +34,7 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
 
     if @student = Student.update(student_params)
-      redirect_to @student
+      redirect_to student_path
     else
       @errors = @student.errors.full_messages
       render 'edit'
