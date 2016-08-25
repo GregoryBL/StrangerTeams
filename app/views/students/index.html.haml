@@ -1,42 +1,5 @@
-
 %h2 Hawkins Middle School Students
+= render @students
 
-%table.table.table-striped
-  %thead
-    %tr
-      %th First Name
-      %th Last Name
-      %th Teacher
-      %th Grade
-      %th Gender
-      %th GPA
-      %th Detention Count
-  %tbody
-    %tr
-      %td= student.first_name
-      %td= student.last_name
-      %td= student.teacher
-      %td= st
-      %td Otto
-      %td @mdo
-      %td @mdo
-      %td= link_to '', "#", class: "glyphicon glyphicon-plus"
-      %td= link_to '', "#", class: "glyphicon glyphicon-minus"
-    %tr
-      %td Mark
-      %td Otto
-      %td @mdo
-      %td Mark
-      %td Otto
-      %td @mdo
-      %td @mdo
-
-    %tr
-      %td Mark
-      %td Otto
-      %td @mdo
-      %td Mark
-      %td Otto
-      %td @mdo
-      %td @mdo
-
+- if teacher_signed_in?
+  = link_to "Create a Student", new_student_path, class: "btn btn-standard"
