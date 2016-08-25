@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   get '/teachers/:id' => 'teachers#show', as: :teacher
+  get '/teachers' => 'teachers#index', as: :teachers
 
 end

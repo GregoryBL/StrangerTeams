@@ -1,0 +1,4 @@
+%h1 Teachers
+%ul#teacher-list
+- @teachers.each do |teacher|
+  %li= link_to "#{teacher.last_name}, #{teacher.first_name}", teacher_path(teacher)

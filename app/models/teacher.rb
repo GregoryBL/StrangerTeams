@@ -2,7 +2,7 @@ class Teacher < ApplicationRecord
   has_many :students, foreign_key: :mentor_id
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  :recoverable, :rememberable, :validatable
 
   validate :school_key_is_correct, on: :create
 
@@ -20,5 +20,9 @@ class Teacher < ApplicationRecord
 
   def full_name
     [first_name, last_name].join(" ")
+  end
+
+  def self.sort_alphabetically_by_last_name
+    Teacher.order(last_name: :asc)
   end
 end
