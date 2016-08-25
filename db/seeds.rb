@@ -8,12 +8,23 @@
 require 'faker'
 
 Student.destroy_all
+Teacher.destroy_all
 
 r = Random.new
 
 gender_array = ["male", "female", "transgender", "other"]
 shirt_size = ["xs", "s", "m", "l", "xl"]
 allergy_array = ["peanuts", "eggs", "lactose"]
+
+10.times do
+    Teacher.create!(
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        password: "password",
+        school_key: "go demogorgons",
+        email: Faker::Internet.email
+        )
+end
 
 300.times do
   Student.create!(
@@ -25,6 +36,6 @@ allergy_array = ["peanuts", "eggs", "lactose"]
     detention_count: r.rand(10),
     shirt_size: shirt_size[r.rand(shirt_size.length)],
     food_allergies: allergy_array[r.rand(allergy_array.length)..r.rand(allergy_array.length)],
-    mentor_id: r.rand(10)
+    mentor_id: r.rand(1..Teacher.all.count)
     )
 end

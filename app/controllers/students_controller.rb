@@ -33,14 +33,15 @@ class StudentsController < ApplicationController
       redirect_to @student
     else
       @errors = @student.errors.full_messages
-      render 'new'
+      render 'edit'
     end
   end
 
   def destroy
     @student = Student.find(params[:id])
-    @student.destroy
-
+    if @student != nil
+      @student.destroy
+    end
     redirect_to students_path
   end
 
