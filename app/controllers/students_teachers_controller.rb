@@ -5,4 +5,12 @@ class StudentsTeachersController < ApplicationController
     @student.update_attributes(mentor: @teacher)
     redirect_to @teacher
   end
+
+  def remove
+    @student = Student.find(params[:student_id])
+    @teacher = Teacher.find(params[:id])
+    @student.update_attributes(mentor: nil)
+    @student.save
+    redirect_to @teacher
+  end
 end
