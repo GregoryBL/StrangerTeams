@@ -15,7 +15,8 @@
   %td= student.detention_count
   - if not_assigned?(student)
     %td
-      %button= link_to 'Add', "student_teacher_path(student, current_teacher)", class: "btn btn-secondary",  method: :patch
+      - p student
+      = button_to 'Add', student_teacher_path(student, current_teacher), class: "btn btn-secondary add-btn", form_class: "add-form",  method: :patch
   - else
     %td
-      %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post
+      = button_to "Remove", "#", class: "btn btn-secondary remove-btn",  method: :post

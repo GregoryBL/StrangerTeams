@@ -1,5 +1,7 @@
 $(function(){
   $("#all-students-table").on("change", ".teacher-drop-down", updateTableFromDropDown);
+
+  $("#all-students-table").on("submit", ".add-form", addStudent)
 });
 
 var updateTableFromDropDown = function(){
@@ -12,6 +14,20 @@ var updateTableFromDropDown = function(){
     url: url
   })
   .done(function(data){
-    $('#student_row_' + $that.attr('id')).replaceWith(data);
+    var IDOfRowToReplace = $(data).attr("id")
+    $('#' + IDOfRowToReplace).replaceWith(data);
   });
+}
+
+var addStudent = function(event){
+  event.preventDefault();
+  var $that = $(this);
+  $.ajax({
+    url: $that.attr('action'),
+    method: "patch"
+  })
+  .done(function(data){
+    var IDOfRowToReplace = $(data).attr("id")
+    $('#' + IDOfRowToReplace).replaceWith(data);
+  })
 }
