@@ -1,4 +1,6 @@
 class Teacher < ApplicationRecord
+  has_many :students, foreign_key: :mentor_id
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
