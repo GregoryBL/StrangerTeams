@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :teachers, path: 'auth'
+
+  get '/students/index', to: 'students#index'
 
   root to: 'welcome#index'
 

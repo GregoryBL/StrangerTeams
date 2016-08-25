@@ -1,0 +1,24 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title StrangerTeams
+    = csrf_meta_tags
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+  %body
+    #flash-container
+      - if flash[:notice]
+        %p.notice= notice
+      - if flash[:alert]
+        %p.alert= alert
+    %header#header
+      %h1 Stranger Teams
+      %ul#nav
+        %li= link_to "Home", root_path
+        - if teacher_signed_in?
+          %li= link_to "Logout", destroy_teacher_session_path, method: :delete
+        - else
+          %li= link_to "Register", new_teacher_registration_path
+          %li= link_to "Log In", teacher_session_path
+    = yield
