@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :teachers, path: 'auth'
 
   resources :students
+  patch '/students/:student_id/teachers/:id' => 'students_teachers#update', as: :student_teacher
 
   root to: 'welcome#index'
 
