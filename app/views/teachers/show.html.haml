@@ -6,3 +6,4 @@
 %p= @teacher.email
 / weheeew
 = render '/students/table', locals: { students: @students }
+= button_to "Remove #{@teacher.full_name}", destroy_teacher_path, method: :delete, class: "btn btn-danger"
