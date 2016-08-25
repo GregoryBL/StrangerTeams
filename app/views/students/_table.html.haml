@@ -13,7 +13,7 @@
           %strong= link_to student.full_name, student_path(student)
         %td= student.grade_level
         %td= student.gender
-        %td= student.gpa
+        %td{:class => color_indicate_gpa_range(student)}= student.gpa
         %td= student.detention_count
         - if not_assigned?(student)
           %td
