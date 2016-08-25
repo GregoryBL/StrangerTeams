@@ -36,6 +36,6 @@ end
     detention_count: r.rand(10),
     shirt_size: shirt_size[r.rand(shirt_size.length)],
     food_allergies: allergy_array[r.rand(allergy_array.length)..r.rand(allergy_array.length)],
-    mentor_id: r.rand(1..Teacher.all.count)
+    mentor: Teacher.all.sample
     )
 end
