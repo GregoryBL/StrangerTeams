@@ -17,7 +17,7 @@
     %td
       - p student
       = button_to 'Add', student_teacher_path(student, current_teacher), class: "btn btn-secondary add-btn", form_class: "add-form",  method: :patch
-  - elsif my_student?(student)
+  - elsif my_student?(student) ||  is_admin?
     %td
       = button_to "Remove", remove_student_teacher_path(student, current_teacher), method: :patch, class: "btn btn-secondary remove-btn", form_class: "remove-form"
   - else

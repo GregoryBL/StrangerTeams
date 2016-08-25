@@ -1,7 +1,7 @@
 $(function(){
   $("#all-students-table").on("change", ".teacher-drop-down", updateTableFromDropDown);
 
-  $("#all-students-table").on("submit", ".add-form", addStudent)
+  $("#all-students-table").on("submit", ".add-form, .remove-form", addStudent)
 });
 
 var updateTableFromDropDown = function(){
