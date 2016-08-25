@@ -1,5 +1,5 @@
 class Student < ApplicationRecord
-  belongs_to :mentor, class_name: :Teacher
+  belongs_to :mentor, class_name: :Teacher, optional: true
 
   validates_presence_of :first_name, :last_name, :grade_level, :gender, :gpa
 
