@@ -22,7 +22,7 @@
         %td= student.detention_count
         - if not_assigned?(student)
           %td.rowlink-skip
-            %button= link_to 'Add', "#", class: "btn btn-secondary",  method: :post
+            %button= link_to 'Add', "student_teacher_path(student, current_teacher)", class: "btn btn-secondary",  method: :patch
         - else
           %td.rowlink-skip
             %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post
