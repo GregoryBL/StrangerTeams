@@ -20,7 +20,7 @@
           %td= student.mentor.full_name
         %td= student.gpa
         %td= student.detention_count
-        - if unassigned?(student)
+        - if not_assigned?(student)
           %td.rowlink-skip
             %button= link_to 'Add', "#", class: "btn btn-secondary",  method: :post
         - else

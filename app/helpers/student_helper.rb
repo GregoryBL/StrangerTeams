@@ -1,5 +1,5 @@
 module StudentHelper
-  def unassigned?(student)
-    student.mentor_id != current_teacher || student.mentor_id == nil
+  def not_assigned?(student)
+    student.mentor_id != current_teacher.id
   end
 end

@@ -1,4 +1,4 @@
-%table.table.table-inverse.table-striped
+%table.table.table-inverse
   %thead
     %tr
       %th Student Name
@@ -9,12 +9,15 @@
   %tbody.rowlink{"data-link" => "row"}
     - students.each do |student|
       %tr
-        %td= link_to student.full_name, student_path(student)
+        %td
+          %strong= link_to student.full_name, student_path(student)
         %td= student.grade_level
         %td= student.gender
         %td= student.gpa
         %td= student.detention_count
-        %td.rowlink-skip
-          %button= link_to 'Add', "#", class: "btn btn-secondary",  method: :post
-        %td.rowlink-skip
-          %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post
+        - if not_assigned?(student)
+          %td.rowlink-skip
+            %button= link_to 'Add', "#", class: "btn btn-secondary",  method: :post
+        - else
+          %td.rowlink-skip
+            %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post
