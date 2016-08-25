@@ -1,0 +1,12 @@
+%h1= @student.full_name
+
+.student-information
+  %p grade level: #{@student.grade_level}
+  %p gender: #{@student.gender}
+  %p gpa: #{@student.gpa}
+  %p detention count: #{@student.detention_count}
+  %p shirt size: #{@student.shirt_size}
+  %p food allergies:
+  %ul
+    - @student.food_allergies.each do |allergy|
+      %li #{allergy}
