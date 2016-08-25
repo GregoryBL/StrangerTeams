@@ -4,16 +4,21 @@
       %th Student Name
       %th Grade
       %th Gender
+      %th Teacher
       %th GPA
       %th Detention Count
   %tbody
-    - @students.each do |student|
+    - students.each do |student|
       %tr
         %td
           %strong= link_to student.full_name, student_path(student)
         %td= student.grade_level
         %td= student.gender
-        %td{:class => color_indicate_gpa_range(student)}= student.gpa
+        - if student.mentor_id == nil
+          %td Unassigned
+        - else
+          %td= student.mentor.full_name
+        %td= student.gpa
         %td= student.detention_count
         - if not_assigned?(student)
           %td
@@ -24,4 +29,3 @@
         - else
           %td
             %button.btn.btn-secondary{:disabled => "disabled", :type => "button"} Assigned
-
