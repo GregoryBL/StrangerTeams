@@ -5,7 +5,10 @@
     %title StrangerTeams
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all'
+    = stylesheet_link_tag    'jansy-bootstrap.min'
     = javascript_include_tag 'application'
+    = javascript_include_tag 'jansy-bootstrap.min'
+
   %body
     #flash-container
       - if flash[:notice]

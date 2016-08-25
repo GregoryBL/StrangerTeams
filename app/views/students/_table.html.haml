@@ -1,22 +1,20 @@
-%table.table
+%table.table.table-inverse.table-striped
   %thead
     %tr
       %th Student Name
-      %th Teacher
       %th Grade
       %th Gender
       %th GPA
       %th Detention Count
-  %tbody
+  %tbody.rowlink{"data-link" => "row"}
     - students.each do |student|
       %tr
-      %td= student.full_name, , student_path(student)
-      %td= student.mentor.full_name
-      %td= student.grade_level
-      %td= student.gender
-      %td= student.gpa
-      %td= student.detention_count
-      / - if student.unassigned?
-      /   %td.col-md-1= link_to '', "#", class: "glyphicon glyphicon-plus"
-      / - else
-      /   %td.col-md-1= link_to '', "#", class: "glyphicon glyphicon-minus"
+        %td= link_to student.full_name, student_path(student)
+        %td= student.grade_level
+        %td= student.gender
+        %td= student.gpa
+        %td= student.detention_count
+        %td.rowlink-skip
+          %button= link_to 'Add', "#", class: "btn btn-secondary",  method: :post
+        %td.rowlink-skip
+          %button= link_to "Remove", "#", class: "btn btn-secondary",  method: :post
