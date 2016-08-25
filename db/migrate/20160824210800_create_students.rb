@@ -9,7 +9,7 @@ class CreateStudents < ActiveRecord::Migration[5.0]
       t.integer  :detention_count, default: 0
       t.string   :shirt_size
       t.string   :food_allergies
-      t.integer  :mentor_id, null: false
+      t.integer  :mentor_id
 
       t.timestamps
     end
