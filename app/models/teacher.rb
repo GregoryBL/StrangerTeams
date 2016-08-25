@@ -6,6 +6,8 @@ class Teacher < ApplicationRecord
 
   validate :school_key_is_correct, on: :create
 
+  before_destroy :clear_self_from_students_mentor
+
   def school_key=(user_key)
     @school_key = user_key
   end
@@ -24,5 +26,11 @@ class Teacher < ApplicationRecord
 
   def self.sort_alphabetically_by_last_name
     Teacher.order(last_name: :asc)
+  end
+
+  def clear_self_from_students_mentor
+    students.each do |student|
+      student.mentor = nil
+    end
   end
 end
