@@ -4,7 +4,6 @@
   %td= student.grade_level
   %td= student.gender
   - path = request.env['PATH_INFO']
-  - p path
   - if path == '/' || path == '/students' || path =~ /\/students\/\d+\/teachers\/\d+(\/remove)?/
     %td
       - if is_admin?
