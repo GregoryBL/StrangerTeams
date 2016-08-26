@@ -7,6 +7,10 @@ class Student < ApplicationRecord
     Student.order(last_name: :asc)
   end
 
+  def self.sort_by(attribute, order_direction)
+    Student.order("#{attribute}":  :"#{order_direction}")
+  end
+
   def full_name
     [first_name, last_name].join(" ")
   end
