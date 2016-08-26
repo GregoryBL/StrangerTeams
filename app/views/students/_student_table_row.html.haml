@@ -3,19 +3,19 @@
     %strong= link_to student.full_name, student_path(student)
   %td= student.grade_level
   %td= student.gender
-  %td
-    - if is_admin?
-      = form_for :teachers, url: student_path(student), method: :patch do |f|
-        = collection_select(:student, :mentor_id, Teacher.all, :id, :full_name, {selected: student.mentor_id, prompt: "Unassigned"}, {id: student.id, class: "teacher-drop-down"})
-    - elsif student.mentor_id == nil
-      Unassigned
-    - else
-      = link_to student.mentor.full_name, teacher_path(student.mentor)
-  %td= student.gpa
+  - if request.env['PATH_INFO'] == '/' || request.env['PATH_INFO'] == '/students'
+    %td
+      - if is_admin?
+        = form_for :teachers, url: student_path(student), method: :patch do |f|
+          = collection_select(:student, :mentor_id, Teacher.all, :id, :full_name, {selected: student.mentor_id, prompt: "Unassigned"}, {id: student.id, class: "teacher-drop-down"})
+      - elsif student.mentor_id == nil
+        Unassigned
+      - else
+        = link_to student.mentor.full_name, teacher_path(student.mentor)
+  %td{:class => color_indicate_gpa_range(student)}= student.gpa
   %td= student.detention_count
   - if not_assigned?(student)
     %td
-      - p student
       = button_to 'Add', student_teacher_path(student, current_teacher), class: "btn btn-secondary add-btn", form_class: "add-form",  method: :patch
   - elsif my_student?(student) ||  is_admin?
     %td
