@@ -36,6 +36,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'rails_12factor'
 gem 'will_paginate', '~> 3.1.0'
+gem "paperclip", "~> 5.0.0"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
