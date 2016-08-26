@@ -1,6 +1,5 @@
-body {
-  background: #160f14;
-}
+$body-bg: #160f14;
+
 
 #nav li{
   list-style-type: none;
@@ -39,3 +38,4 @@ body {
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Lora);

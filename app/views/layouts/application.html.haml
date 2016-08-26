@@ -1,14 +1,15 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
     %title StrangerTeams
+
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all'
     = stylesheet_link_tag    'jansy-bootstrap.min'
+    = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_include_tag 'jansy-bootstrap.min'
-
+    %style 'font-family':
   %body
     #flash-container
       - if flash[:notice]
@@ -16,7 +17,7 @@
       - if flash[:alert]
         %p.alert= alert
     %header#header
-      %nav.navbar.navbar-default
+      %nav.navbar-inverse
         %ul.nav.navbar-nav
           %li.nav-left= link_to "Home", root_path
           - if teacher_signed_in?
