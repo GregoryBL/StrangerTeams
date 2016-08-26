@@ -10,18 +10,18 @@
     = javascript_include_tag 'jansy-bootstrap.min'
 
   %body
-    #flash-container
+    #flash-container.container
       - if flash[:notice]
         %p.notice= notice
       - if flash[:alert]
         %p.alert= alert
-    %header#header
+    %header#header.container
       %nav.navbar.navbar-default
         %ul.nav.navbar-nav
           %li.nav-left= link_to "Home", root_path
           - if teacher_signed_in?
             %li.nav-left= link_to "All Teachers", teachers_path
-            %li.nav-left= link_to "All Students", students_path
+            %li.nav-left= link_to "All Students", root_path
             %li.nav-left= link_to "Add Student", new_student_path
             %li.nav-left= link_to "Bulk Import", students_import_path
             / Nav left and nav right seem not to be working
@@ -30,5 +30,5 @@
           - else
             %li.nav-right= link_to "Register", new_teacher_registration_path
             %li.nav-right= link_to "Log In", teacher_session_path
-      %h1 Stranger Teams
+      = image_tag("/app/assets/images/StrangerTeams_488x135.png")
     = yield
