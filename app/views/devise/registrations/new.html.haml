@@ -3,14 +3,14 @@
   = devise_error_messages!
   .form-group
     = f.label :first_name
-    = f.text_field :first_name, class: "form-control"
+    = f.text_field :first_name, autofocus: true, class: "form-control"
   .form-group
     = f.label :last_name
     = f.text_field :last_name, class: "form-control"
   .form-group
     = f.label :email
     %br/
-    = f.email_field :email, autofocus: true, class: "form-control"
+    = f.email_field :email, class: "form-control"
   .form-group
     = f.label :password
     - if @minimum_password_length
