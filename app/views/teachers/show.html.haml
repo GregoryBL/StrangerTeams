@@ -2,8 +2,8 @@
 / edit info
 / delete self
 
+= image_tag(@teacher.avatar.url, size: "300x250")
 %h2= @teacher.full_name
 %p= @teacher.email
-/ weheeew
 = render partial: '/students/table', locals: { students: @students }
 = button_to "Remove #{@teacher.full_name}", teacher_path, method: :delete, class: "btn btn-danger"

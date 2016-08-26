@@ -4,9 +4,13 @@ class Teacher < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" } , default_url: "/capybara.jpg"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
   validate :school_key_is_correct, on: :create
 
   before_destroy :clear_self_from_students_mentor
+
 
   def school_key=(user_key)
     @school_key = user_key
