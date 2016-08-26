@@ -1,6 +1,8 @@
-%h1 Teachers
-%ul#teacher-list
-- @teachers.each do |teacher|
-  = image_tag(teacher.avatar.url, size: "100x100")
-  = link_to "#{teacher.last_name}, #{teacher.first_name}", teacher_path(teacher)
-/ removed li but this will need to be styled as a gallery anyway
+.container
+  %h1.text-center Teachers
+  %ul#teacher-list
+  - @teachers.each do |teacher|
+    .pull-left.col-sm-4
+      .teacher
+        = image_tag(teacher.avatar.url, size: "100x100", class: "img-responsive center-block")
+        %p.text-center= link_to "#{teacher.last_name}, #{teacher.first_name}", teacher_path(teacher)

@@ -1,14 +1,15 @@
-%h1= @student.full_name
+.container
+  %h1= @student.full_name
 
-.student-information
-  %p grade level: #{@student.grade_level}
-  %p gender: #{@student.gender}
-  %p gpa: #{@student.gpa}
-  %p detention count: #{@student.detention_count}
-  %p shirt size: #{@student.shirt_size}
-  %p food allergies: #{@student.food_allergies}
+  .student-information
+    %p grade level: #{@student.grade_level}
+    %p gender: #{@student.gender}
+    %p gpa: #{@student.gpa}
+    %p detention count: #{@student.detention_count}
+    %p shirt size: #{@student.shirt_size}
+    %p food allergies: #{@student.food_allergies}
 
-.edit-and-delete-buttons
-  %p
-    = button_to "Edit Student Information", edit_student_path(@student), method: :get, class: "btn btn-primary"
-    = button_to "Delete #{@student.first_name} From School", student_path(@student), confirm: "Are you sure you want to remove this student?", method: :delete, class: "btn btn-danger"
+  .edit-and-delete-buttons
+    %p
+      = button_to "Edit Student Information", edit_student_path(@student), method: :get, class: "btn btn-primary"
+      = button_to "Delete #{@student.first_name} From School", student_path(@student), confirm: "Are you sure you want to remove this student?", method: :delete, class: "btn btn-danger"
