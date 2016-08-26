@@ -4,10 +4,10 @@ class Student < ApplicationRecord
   validates_presence_of :first_name, :last_name, :grade_level, :gender, :gpa
 
   def self.sort_alphabetically_by_last_name
-    Student.order(last_name: :asc)
+    self.sort_by_fields("last_name", "asc")
   end
 
-  def self.sort_by(attribute, order_direction)
+  def self.sort_by_fields(attribute, order_direction)
     Student.order("#{attribute}":  :"#{order_direction}")
   end
 
