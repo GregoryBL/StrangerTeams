@@ -16,15 +16,19 @@
       - if flash[:alert]
         %p.alert= alert
     %header#header
-      %ul#nav
-
-        %li= link_to "Home", root_path
-        - if teacher_signed_in?
-          %li= link_to "Teachers", teachers_path
-          %li= link_to "Profile", teacher_path(current_teacher)
-          %li= link_to "Logout", destroy_teacher_session_path, method: :delete
-        - else
-          %li= link_to "Register", new_teacher_registration_path
-          %li= link_to "Log In", teacher_session_path
+      %nav.navbar.navbar-default
+        %ul.nav.navbar-nav
+          %li.nav-left= link_to "Home", root_path
+          - if teacher_signed_in?
+            %li.nav-left= link_to "All Teachers", teachers_path
+            %li.nav-left= link_to "All Students", students_path
+            %li.nav-left= link_to "Add Student", new_student_path
+            %li.nav-left= link_to "Bulk Import", students_import_path
+            / Nav left and nav right seem not to be working
+            %li.nav-right= link_to "Profile", teacher_path(current_teacher)
+            %li.nav-right= link_to "Logout", destroy_teacher_session_path, method: :delete
+          - else
+            %li.nav-right= link_to "Register", new_teacher_registration_path
+            %li.nav-right= link_to "Log In", teacher_session_path
       %h1 Stranger Teams
     = yield
