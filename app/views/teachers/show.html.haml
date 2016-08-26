@@ -2,7 +2,7 @@
 / edit info
 / delete self
 
-= image_tag @teacher.avatar.url(:medium)
+= image_tag(@teacher.avatar.url, size: "300x250")
 %h2= @teacher.full_name
 %p= @teacher.email
 = render partial: '/students/table', locals: { students: @students }
