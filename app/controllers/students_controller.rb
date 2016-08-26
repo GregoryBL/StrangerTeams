@@ -33,7 +33,7 @@ class StudentsController < ApplicationController
   def update #put student data
     @student = Student.find(params[:id])
 
-    if @student = Student.update(student_params)
+    if @student.update_attributes(student_params)
       redirect_to @student
     else
       @errors = @student.errors.full_messages
