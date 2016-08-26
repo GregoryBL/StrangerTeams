@@ -20,6 +20,7 @@ allergy_array = ["peanuts", "eggs", "lactose"]
     Teacher.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name,
+        avatar: File.new("#{Rails.root}/public/capybara.jpg"),
         password: "password",
         school_key: "go demogorgons",
         email: Faker::Internet.email
