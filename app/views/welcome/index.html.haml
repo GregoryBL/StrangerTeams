@@ -1,5 +1,5 @@
 %h2 Hawkins Middle School Students
-= render partial: "students/student", locals: {students: @student_paginate}
+= render partial: "students/table", locals: {students: @student_paginate}
 = will_paginate @student_paginate
 
 - if teacher_signed_in?
