@@ -61,7 +61,7 @@ class StudentsController < ApplicationController
 
   private
   def student_params
-    params.require(:student).permit(:first_name, :last_name, :grade_level, :gender, :gpa, :detention_count, :shirt_size, :food_allergies, :mentor_id)
+    params.require(:student).permit(:first_name, :last_name, :grade_level, :gender, :gpa, :detention_count, :shirt_size, :food_allergies, :mentor_id, :student_id)
   end
 
   def extension_white_list
