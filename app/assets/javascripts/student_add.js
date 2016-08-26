@@ -27,7 +27,12 @@ var addStudent = function(event){
     method: "patch"
   })
   .done(function(data){
-    var IDOfRowToReplace = $(data).attr("id")
-    $('#' + IDOfRowToReplace).replaceWith(data);
+    var IDOfRowToReplace = $(data).attr("id");
+    console.log($("#all-students-table").parent().attr("id"))
+    if ($("#all-students-table").parent().attr("id") != "teacher-profile-students-table") {
+      $('#' + IDOfRowToReplace).replaceWith(data);
+    } else {
+      $('#' + IDOfRowToReplace).remove();
+    }
   })
 }
