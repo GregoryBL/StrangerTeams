@@ -1,13 +1,21 @@
 %table.table.table-inverse#all-students-table
   %thead
     %tr
-      %th Student Name
-      %th Grade
+      %th
+        = link_to "Student Name", students_path(:attr => "alphabetically"), class: "sort-table-header", id: "alphabetically"
+      %th
+        = link_to "Grade", students_path(:attr => "grade_level", :order_direction => "asc"), class: "sort-table-header", id: "grade_level"
       %th Gender
       - if request.env['PATH_INFO'] == '/' || request.env['PATH_INFO'] == '/students'
-        %th Teacher
-      %th GPA
-      %th Detention Count
+        %th
+          = link_to "Teacher", students_path(:attr => "mentor_id", :order_direction => "asc"), class: "sort-table-header", id: "mentor_id"
+
+      %th
+        = link_to "GPA", students_path(:attr => "gpa", :order_direction => "asc"), class: "sort-table-header", id: "gpa"
+      %th
+        = link_to "Detention Count", students_path(:attr => "detention_count", :order_direction => "asc"), class: "sort-table-header", id: "detention_count"
+      %th
+        = link_to "Assigned", students_path(:attr => "mentor_id", :order_direction => "desc"), class: "sort-table-header", id: ""
   %tbody
     - students.each do |student|
       = render partial: "/students/student_table_row", locals: { student: student }

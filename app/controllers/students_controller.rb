@@ -5,7 +5,19 @@ class StudentsController < ApplicationController
   before_action :authenticate_teacher!
 
   def index # call method to sort students alphabetically
-    @student_paginate = Student.paginate(:page => params[:page], :per_page => 25).sort_alphabetically_by_last_name
+    # if request.xhr?
+    #   if params[:alphabetically]
+    #     @student_paginate = Student.paginate(:page => params[:page], :per_page => 25).sort_alphabetically_by_last_name
+    #   else
+    #     @student_paginate = Student.paginate(:page => params[:page], :per_page => 25).sort_by_fields(params[:attr], params[:order_direction])
+    #   end
+    # else
+      if params[:attr] != "alphabetically"
+        @student_paginate = Student.paginate(:page => params[:page], :per_page => 25).sort_by_fields(params[:attr], params[:order_direction])
+      else
+        @student_paginate = Student.paginate(:page => params[:page], :per_page => 25).sort_alphabetically_by_last_name
+      end
+    # end
   end
 
   def show # show individual student
@@ -33,7 +45,7 @@ class StudentsController < ApplicationController
   def update #put student data
     @student = Student.find(params[:id])
 
-    if @student = Student.update(student_params)
+    if @student.update_attributes(student_params)
       redirect_to @student
     else
       @errors = @student.errors.full_messages
