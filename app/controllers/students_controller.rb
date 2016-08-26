@@ -54,10 +54,7 @@ class StudentsController < ApplicationController
 
   def create_multiple
     CSV.foreach(params[:student_csv_file][:attachment].path, headers: true) do |row|
-      param_hash = row.to_hash
-      param_hash["food_allergies"] = param_hash["food_allergies"].split(" ") if param_hash["food_allergies"]
-      p param_hash
-      student = Student.create!(param_hash)
+      student = Student.find_or_create_by!(row.to_hash)
     end
     redirect_to students_path
   end
