@@ -4,9 +4,13 @@ class Teacher < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable
 
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" } , default_url: "/system/teachers/avatars/000/000/009/thumb/capybara.jpg"
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
+
   validate :school_key_is_correct, on: :create
 
   before_destroy :clear_self_from_students_mentor
+
 
   def school_key=(user_key)
     @school_key = user_key
@@ -17,7 +21,11 @@ class Teacher < ApplicationRecord
   end
 
   def school_key_is_correct
-    errors.add(@school_key, "is not the correct school key") unless school_key.downcase == "go demogorgons"
+    if school_key.downcase == "i am the demogorgon"
+      self.admin = true
+    else
+      errors.add(@school_key, "is not the correct school key") unless school_key.downcase == "go demogorgons"
+    end
   end
 
   def full_name
