@@ -1,0 +1,27 @@
+= form_for @student do |f|
+  .form_group
+    = f.label :first_name
+    = f.text_field :first_name
+  .form_group
+    = f.label :last_name
+    = f.text_field :last_name
+  .form_group
+    = f.label :grade_level
+    = f.text_field :grade_level
+  .form_group
+    = f.label :gender
+    = f.select "gender",[["male", "male"], ["female", "female"], ["transgender", "transgender"], ["other", "other"]]
+  .form_group
+    = f.label :gpa
+    = f.text_field :gpa
+  .form_group
+    = f.label :detention_count
+    = f.text_field :detention_count
+  .form_group
+    = f.label :shirt_size
+    = f.select "shirt_size", [["xs", "xs"], ["s", "s"], ["m", "m"], ["l", "l"], ["xl", "xl"]]
+  .form_group
+    = f.label :food_allergies
+    = f.text_area :food_allergies
+  .form_group
+    = f.submit
