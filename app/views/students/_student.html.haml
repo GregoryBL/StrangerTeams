@@ -1,4 +1,4 @@
-%table.table.table-inverse
+%table.table.table-inverse#all-students-table
   %thead
     %tr
       %th Student Name
@@ -9,23 +9,4 @@
       %th Detention Count
   %tbody
     - students.each do |student|
-      %tr
-        %td
-          %strong= link_to student.full_name, student_path(student)
-        %td= student.grade_level
-        %td= student.gender
-        - if student.mentor_id == nil
-          %td Unassigned
-        - else
-          %td= link_to student.mentor.full_name, teacher_path(student.mentor)
-        %td= student.gpa
-        %td= student.detention_count
-        - if not_assigned?(student)
-          %td
-            = button_to 'Add', student_teacher_path(student, current_teacher),  method: :patch, class: "btn btn-secondary"
-        - elsif my_student?(student)
-          %td
-            = button_to "Remove", remove_student_teacher_path(student, current_teacher), method: :patch, class: "btn btn-secondary"
-        - else
-          %td
-            %button.btn.btn-secondary{:disabled => "disabled", :type => "button"} Assigned
+      = render partial: "/students/student_table_row", locals: { student: student }
