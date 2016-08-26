@@ -68,7 +68,7 @@ class StudentsController < ApplicationController
     CSV.foreach(params[:student_csv_file][:attachment].path, headers: true) do |row|
       student = Student.find_or_create_by!(row.to_hash)
     end
-    redirect_to students_path
+    redirect_to root_path
   end
 
   private

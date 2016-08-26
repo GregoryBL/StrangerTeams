@@ -1,6 +1,7 @@
-%h2 Hawkins Middle School Students
-= render partial: "students/table", locals: {students: @student_paginate}
-= will_paginate @student_paginate
+.container
+  %h2 Hawkins Middle School Students
+  = render partial: "students/table", locals: {students: @student_paginate}
+  = will_paginate @student_paginate
 
-- if teacher_signed_in?
-  = link_to "Create a Student", new_student_path, class: "btn btn-secondary"
+  - if teacher_signed_in?
+    = link_to "Create a Student", new_student_path, class: "btn btn-secondary"

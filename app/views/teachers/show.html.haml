@@ -1,9 +1,9 @@
-/ add picture at some point
-/ edit info
-/ delete self
-
 = image_tag(@teacher.avatar.url, size: "300x250")
 %h2= @teacher.full_name
 %p= @teacher.email
-= render partial: '/students/table', locals: { students: @students }
-= button_to "Remove #{@teacher.full_name}", teacher_path, method: :delete, class: "btn btn-danger"
+
+#teacher-profile-students-table
+  = render partial: '/students/table', locals: { students: @students }
+
+- if is_admin? || @teacher.id == current_teacher.id
+  = button_to "Remove #{@teacher.full_name}", teacher_path, method: :delete, class: "btn btn-danger"

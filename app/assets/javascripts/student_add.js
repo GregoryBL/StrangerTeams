@@ -13,10 +13,7 @@ var updateTableFromDropDown = function(){
     method: "patch",
     url: url
   })
-  .done(function(data){
-    var IDOfRowToReplace = $(data).attr("id")
-    $('#' + IDOfRowToReplace).replaceWith(data);
-  });
+  .done(conditionallyReplaceRow);
 }
 
 var addStudent = function(event){
@@ -26,8 +23,14 @@ var addStudent = function(event){
     url: $that.attr('action'),
     method: "patch"
   })
-  .done(function(data){
-    var IDOfRowToReplace = $(data).attr("id")
+  .done(conditionallyReplaceRow)
+}
+
+var conditionallyReplaceRow = function(data){
+  var IDOfRowToReplace = $(data).attr("id");
+  if ($("#all-students-table").parent().attr("id") != "teacher-profile-students-table") {
     $('#' + IDOfRowToReplace).replaceWith(data);
-  })
+  } else {
+    $('#' + IDOfRowToReplace).remove();
+  }
 }

@@ -3,7 +3,8 @@
     %strong= link_to student.full_name, student_path(student)
   %td= student.grade_level
   %td= student.gender
-  - if request.env['PATH_INFO'] == '/' || request.env['PATH_INFO'] == '/students'
+  - path = request.env['PATH_INFO']
+  - if path == '/' || path == '/students' || path =~ /\/students\/\d+\/teachers\/\d+(\/remove)?/
     %td
       - if is_admin?
         = form_for :teachers, url: student_path(student), method: :patch do |f|

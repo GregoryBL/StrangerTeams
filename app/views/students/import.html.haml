@@ -1,6 +1,7 @@
-= form_for "student_csv_file", url: students_import_path, method: :post do |f|
-  .form-group
-    = f.label :attachment
-    = f.file_field :attachment, class: "form-control"
-  .form-group
-    = f.submit "Import", class: "btn btn-primary"
+.container
+  = form_for "student_csv_file", url: students_import_path, method: :post do |f|
+    .form-group
+      = f.label :attachment
+      = f.file_field :attachment, class: "form-control"
+    .form-group
+      = f.submit "Import", class: "btn btn-primary"
